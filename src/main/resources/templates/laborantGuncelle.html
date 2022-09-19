@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Admin Page for Adding User</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href="form-validation.css" rel="stylesheet">
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js"
+            integrity="sha384-zDnhMsjVZfS3hiP7oCBRmfjkQC4fzxVkLH2X8VIwF7sx28G7AlTxfeIscP4Qzm"
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+</head>
+
+<body class="bg-light">
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>Laborant Guncelle</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">Laborant Ekleyin</h4>
+            <form action="#" th:action="@{/laborantlar/laborantEkle}" th:object="${laborant}" method="post"
+                  class="needs-validation"
+                  novalidate>
+                <input type="hidden" th:field="*{id}"/>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="isim">Laborant Isim</label>
+                        <input th:field="*{isim}" type="text" class="form-control" id="isim" placeholder=""
+                               value="" required>
+                        <div class="invalid-feedback">
+                            Geçerli Bir İsim Giriniz
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="soyisim">Soyisim</label>
+                        <input th:field="*{soyisim}" type="text" class="form-control" id="soyisim" placeholder=""
+                               value="" required>
+                        <div class="invalid-feedback">
+                            Geçerli Bir Soyisim Giriniz
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="hastaneNo">Hastane Numarası</label>
+                    <div class="input-group">
+                        <input th:field="*{hastaneNo}" type="text" class="form-control" id="hastaneNo"
+                               placeholder="Hastane Numarası" required>
+                        <div class="invalid-feedback" style="width: 100%;">
+                            Hastane Numarası Bulunamamıştır
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="KullaniciAdi">Kullanıcı Adı</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">#</span>
+                        </div>
+                        <input th:field="*{KullaniciAdi}" type="text" class="form-control" id="KullaniciAdi"
+                               placeholder="Kullanıcı Adı" required>
+                        <div class="invalid-feedback" style="width: 100%;">
+                            Kullanıcı Adınızı Tekrar Giriniz
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="sifre">Şifre <span class="text-muted"></span></label>
+                    <input th:field="*{sifre}" type="password" class="form-control" id="sifre"
+                           placeholder="*******">
+                    <div class="invalid-feedback">
+                        Şifrenizi Tekrardan Gözden Geçirin
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="rol">Rol</label>
+                    <input th:field="*{rol}" type="text" class="form-control" id="rol" placeholder="LABORANT - ADMIN"
+                           required>
+                    <div class="invalid-feedback">
+                        Geçerli Rol Girin
+                    </div>
+                </div>
+
+                <hr class="mb-4">
+                <div th:if="${#fields.hasAnyErrors()}">
+                    <ul>
+                        <li th:each="err : ${#fields.allErrors()}" th:text="${err}"/>
+                    </ul>
+                </div>
+
+                <button class="btn btn-primary btn-sm btn-block" type="submit">Laborant Guncelle</button>
+
+            </form>
+            <br><br>
+            <a th:href="@{/laborantlar/anasayfa}" class="btn btn-primary btn-m btn-block" type="submit">Laborantlar
+                Anasayfa</a>
+            <a th:href="@{/raporlar/anasayfa}" class="btn btn-primary btn-m btn-block" type="submit">Raporlar
+                Anasayfa</a>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

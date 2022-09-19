@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Raporlar Ana Sayfa</title>
+
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" >
+    <link rel="stylesheet" th:href="@{/css/pogo-slider.min.css}" >
+    <link rel="stylesheet" th:href="@{/css/style.css}" >
+    <link rel="stylesheet" th:href="@{/css/responsive.css}">
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+
+</head>
+<body id="home" data-spy="scroll" data-target="#navbar-wd" data-offset="98">
+
+<header class="top-header">
+    <nav class="navbar header-nav navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" th:href="@{/}">
+                <img style="width: 70px; height: 55px" src="https://cdn-icons-png.flaticon.com/512/3097/3097991.png">
+            </a>
+            <h4 style="margin-left: 300px; color: #1f1f1f; font-size: 24px; margin-top: 10px">Laboratuvar Uygulaması</h4>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-wd" aria-controls="navbar-wd" aria-expanded="false" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbar-wd">
+                <ul class="navbar-nav">
+                    <li><a class="nav-link active" th:href="@{/raporlar/anasayfa}">Ana Menu</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="ulockd-home-slider">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="pogoSlider" id="js-main-slider">
+                <div class="pogoSlider-slide" data-transition="fade" data-duration="1500" th:style="'background-image:url(' + @{/images/slider-01.jpg} + ');'">
+                    <div class="lbox-caption pogoSlider-slide-element">
+                        <div class="lbox-details">
+                            <h1>Özgür Yazılım A.Ş Lab Projesine Hoşgeldiniz</h1>
+                            <a th:href="@{/raporlar/tablo}" class="btn">Raporlar Tablo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="pogoSlider-slide" data-transition="fade" data-duration="1500" th:style="'background-image:url(' + @{/images/slider-02.jpg} + ');'">
+                    <div class="lbox-caption pogoSlider-slide-element">
+                        <div class="lbox-details">
+                            <h1>Laborant Eklemek İçin Tıklayın </h1>
+                            <a th:href="@{/raporlar/raporKayit}" class="btn">Kayıt Ekle</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="about" class="about-box">
+    <div class="about-a1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title-box">
+                        <h2>Hakkımda</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="row align-items-center about-main-info">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <h2>Staja Kabulüm Hakkında</h2>
+                            <p>Staja kabul edilirsem bu süreçte geçireceğim vakti kendimi her an geliştirmek için kullanacağım ve bu dönem aldığım Bitirme Projem için yapacağım Spring projeme yardımcı olacak. Java Developer olma yolunda bana sağlayacağınız destekler için şimdiden teşekkür ederim.</p>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="about-m">
+                                <ul id="banner">
+                                    <li>
+                                        <img th:src="@{/images/about-img-01.jpg}" alt="">
+                                    </li>
+                                    <li>
+                                        <img th:src="@{/images/about-img-02.jpg}" alt="">
+                                    </li>
+                                    <li>
+                                        <img th:src="@{/images/about-img-03.jpg}" alt="">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <p class="footer-company-name">All Rights Reserved. &copy;2022 <a href="#">Lab Web App</a> Design By : <a href="https://github.com/derinaden">Derin Aden</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<a href="#" id="scroll-to-top" class="new-btn-d br-2"><i class="fa fa-angle-up"></i></a>
+
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+<script th:src="@{/js/jquery.pogo-slider.min.js}"></script>
+<script th:src="@{/js/slider-index.js}"></script>
+<script th:src="@{/js/smoothscroll.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/images-loded.min.js}"></script>
+<script th:src="@{/js/custom.js}"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Laborantlar</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js"
+            integrity="sha384-zDnhMsjVZfS3hiP7oCBRmfjkQC4fzxVkLH2X8VIwF7sx28G7AlTxfeIscP4Qzm"
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+
+   <style>
+       table tr td:nth-child(2) {
+           background: #8e8e8e;
+       }
+       @media (min-width: 48em) {
+           .masthead-brand {
+               float: left;
+           }
+           .nav-masthead {
+               float: right;
+           }
+       }
+   </style>
+</head>
+<body>
+<div>
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+        <main style="margin-left: 40% " role="main" class="inner cover">
+            <h1 class="masthead-brand">Laborantlar</h1>
+        </main>
+    </div>
+</div>
+<table class="table table-bordered table-striped">
+    <thead class="thead-light">
+    <tr>
+        <th>Laborant ID</th>
+        <th>Tam İsim</th>
+        <th>Hastane No</th>
+        <th>Rol</th>
+        <th>Kullanıcı Adı</th>
+        <th>Şifre</th>
+        <div sec:authorize="hasRole('ROLE_ADMIN')">
+            <th>Butonlar</th>
+        </div>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="laborant : ${laborantlar}">
+        <td th:text="${laborant.id}"/>
+        <td th:text="${laborant.isim} + ' ' + ${laborant.soyisim}"/>
+        <td th:text="${laborant.hastaneNo}"/>
+        <td th:text="${laborant.rol}"/>
+        <td th:text="${laborant.KullaniciAdi}"/>
+        <td th:text="${laborant.sifre}"/>
+        <div sec:authorize="hasRole('ROLE_ADMIN')">
+            <td>
+                <a th:href="@{/laborantlar/laborantGuncelle(id=${laborant.id})}" class="btn btn-info btn-sm">Guncelle</a>
+
+                <a th:href="@{/laborantlar/laborantSil(id=${laborant.id})}"
+                   class="btn btn-danger btn-sm"
+                   onclick="if (!(confirm('Raporu silmek istediğinize emin misiniz?'))) return false ">Sil</a>
+            </td>
+        </div>
+    </tr>
+    </tbody>
+</table>
+
+<div sec:authorize="hasRole('ROLE_ADMIN')">
+    <a th:href="@{/laborantlar/laborantKayit}" class="btn btn-primary btn-sm mb-3">
+        Laborant Ekle
+    </a>
+    <a th:href="@{/raporlar/raporKayit}" class="btn btn-primary ml-1 mr-3 btn-sm mb-3">
+        Rapor Ekle
+    </a>
+</div>
+</body>
+</html>

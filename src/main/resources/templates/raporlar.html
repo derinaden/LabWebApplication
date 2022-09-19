@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js"
+            integrity="sha384-zDnhMsjVZfS3hiP7oCBRmfjkQC4fzxVkLH2X8VIwF7sx28G7AlTxfeIscP4Qzm"
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+
+    <style>
+        table tr td:nth-child(2) {
+            background: #ccc;
+        }
+        @media (min-width: 48em) {
+            .masthead-brand {
+                float: left;
+            }
+            .nav-masthead {
+                float: right;
+            }
+        }
+    </style>
+    <title>Raporlar Tablo</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div>
+        <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+            <main style="margin-left: 40% " role="main" class="inner cover">
+                <h1 class="masthead-brand">Raporlar</h1>
+            </main>
+        </div>
+    </div>
+    <hr>
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Dosya ID</th>
+            <th>Hasta İsmi</th>
+            <th>Hasta TC'si</th>
+            <th>Başlık</th>
+            <th>Hastalık Teşhisi</th>
+            <th>
+                <a th:href="@{/raporlar/raporSirala}">Tarih</a>
+            </th>
+            <th>Laborant İsmi</th>
+
+            <th>Dosya</th>
+
+
+            <div sec:authorize="hasRole('ROLE_ADMIN')">
+                <th>Butonlar</th>
+            </div>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="rapor : ${raporlar}">
+            <td th:text="${rapor.id}"/>
+            <td th:text="${rapor.hastaAdi} + ' ' + ${rapor.hastaSoyadi}" />
+            <td th:text="${rapor.hastaKimlikNo}"/>
+            <td th:text="${rapor.taniBaslik}"/>
+            <td th:text="${rapor.taniDetay}"/>
+            <td th:text="${rapor.tarih}"/>
+            <td th:text="${rapor.laborant.getIsim()} + ' ' + ${rapor.laborant.getSoyisim()}"/>
+
+            <td>
+                <a th:href="@{/raporlar/raporIndir(id=${rapor.id})}">İndir</a>
+            </td>
+            <div sec:authorize="hasRole('ROLE_ADMIN')">
+                <td>
+
+                    <a th:href="@{/raporlar/raporGuncelle(id=${rapor.id})}" class="btn btn-info btn-sm">Guncelle</a>
+
+                    <a th:href="@{/raporlar/raporSil(id=${rapor.id})}"
+                       class="btn btn-danger btn-sm"
+                       onclick="if (!(confirm('Are you sure you want to delete this report?'))) return false ">Sil</a>
+                </td>
+            </div>
+        </tr>
+        </tbody>
+    </table>
+
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
+        <a th:href="@{/raporlar/raporKayit}" class="btn btn-primary btn-sm mb-3">
+           Rapor Ekle
+        </a>
+        <a th:href="@{/laborantlar/laborantKayit}" class="btn btn-primary ml-1 mr-3 btn-sm mb-3">
+            Laborant Ekle
+        </a>
+    </div>
+
+    <div sec:authorize="hasRole('ROLE_USER')">
+        <a th:href="@{/raporlar/raporKayit}" class="btn btn-primary btn-sm mb-3">
+            Rapor Ekle
+        </a>
+    </div>
+
+    <form th:action="@{/raporlar/ara}" class="form-inline">
+        <input class="form-control mr-sm-2 mb-3" style="width: 45%" type="search" name="aranan" placeholder="İçerik Arayınız" />
+        <button class="btn btn-success mb-3" type="submit">Ara</button>
+    </form>
+    <br>
+    <form action="#" th:action="@{/logout}"
+          method="POST">
+        <input type="submit" value="Çıkış Yap" class="btn btn-outline-primary mt-2" />
+    </form>
+
+</div>
+</body>
+</html>
+
+
+

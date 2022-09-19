@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anamenu</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <style>
+        body,h1 {font-family: "Raleway", sans-serif}
+        body, html {height: 100%}
+        .bgimg {
+            background-image: url('https://img.freepik.com/free-vector/clean-medical-background_53876-97927.jpg?w=2000');
+            min-height: 100%;
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+
+<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+    <div class="w3-display-middle">
+        <h1 class="w3-jumbo w3-animate-top" style="text-align:center; color: #1f1f1f">Laboratuvar Raporlama Web Uygulaması</h1>
+        <hr class="w3-border-grey" style="margin:auto;width:40%">
+        <a class="w3-round" style="margin-left:300px; margin-top:50px; color: #1f1f1f; font-size: 24px; text-decoration: none; border: 2px solid #1f1f1f" th:href="@{/laborantlar/anasayfa}" target="_blank">Laborantlar</a>
+        <a class="w3-round" style="margin-left:300px; margin-top:50px; color: #1f1f1f; font-size: 24px; text-decoration: none; border: 2px solid #1f1f1f" th:href="@{/raporlar/anasayfa}" target="_blank">Raporlar</a>
+    </div>
+</div>
+
+</body>
+</html>

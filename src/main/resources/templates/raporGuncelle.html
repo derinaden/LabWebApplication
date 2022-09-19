@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Raporlar İçin Admin Sayfası</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js"
+            integrity="sha384-zDnhMsjVZfS3hiP7oCBRmfjkQC4fzxVkLH2X8VIwF7sx28G7AlTxfeIscP4Qzm"
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+</head>
+
+<body class="bg-light">
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>Rapor Ekle</h2>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">Rapor Ekle</h4>
+            <form action="#" th:action="@{/raporlar/raporKayit}" th:object="${rapor}" method="post"
+                  enctype="multipart/form-data" class="needs-validation" novalidate>
+
+                <input type="hidden" th:field="*{id}"/>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="taniBaslik">Tanı Başlık</label>
+                        <input th:field="*{taniBaslik}" type="text" class="form-control" id="taniBaslik" placeholder=""
+                               value=""
+                               required>
+                        <div class="invalid-feedback">
+                            Geçerli Tanı Başlığı Giriniz.
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="taniDetay">Tanı Detay</label>
+                        <input th:field="*{taniDetay}" type="text" class="form-control" id="taniDetay"
+                               placeholder="" value="" required>
+                        <div class="invalid-feedback">
+                            Geçerli Tanı Detayı Giriniz.
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="hastaAdi">Hasta Adı</label>
+                        <input th:field="*{hastaAdi}" type="text" class="form-control" id="hastaAdi"
+                               placeholder="Hasta Adı" value="" required>
+                        <div class="invalid-feedback">
+                            Geçerli Hasta Adı Giriniz.
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="hastaSoyadi">Hasta Soyadı</label>
+                        <input th:field="*{hastaSoyadi}" type="text" class="form-control" id="hastaSoyadi"
+                               placeholder="Hasta Soyadı" value="" required>
+                        <div class="invalid-feedback">
+                            Geçerli Hasta Soyadı Giriniz.
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="hastaKimlikNo">Hasta T.C.</label>
+                    <div class="input-group">
+                        <input th:field="*{hastaKimlikNo}" type="text" class="form-control" id="hastaKimlikNo"
+                               placeholder="Patient TC" required>
+                        <div class="invalid-feedback" style="width: 100%;">
+                            Geçerli Hasta T.C. Giriniz.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="tarih">Tarih</label>
+                    <div class="input-group">
+                        <input type="datetime-local" th:field="*{tarih}" id="tarih" class="form-control mb-4 col-4"
+                               value="2015-02-02">
+
+                        <input type="button" class="btn btn-secondary btn-sml btn-block" value="Su Anki Zamanı Girin"
+                               id="button_id"/>
+
+                        <div class="invalid-feedback" style="width: 100%;">
+                            Geçerli Tarih Giriniz.
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="file">Rapor Dosyası</label>
+                    <input type="file" th:field="*{rapor_img}" id="file" class="form-control mb-4 col-4">
+                    <div class="invalid-feedback">
+                        Geçerli Rapor Dosyası Giriniz.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-control" for="userselect">Options</label>
+                    <select class="form-select" id="userselect" th:field="*{laborant}">
+                        <option selected value="0" th:value="null">Select a User</option>
+                        <option th:each="laborant :${laborantlar}" th:value="${laborant.getId()}"
+                                th:text="${laborant.getId()} + ' ' + ${laborant.getHastaAdi()} + ' ' + ${laborant.getHastaSoyadi()}"></option>
+                    </select>
+                </div>
+
+                <hr class="mb-4">
+                <div th:if="${#fields.hasAnyErrors()}">
+                    <ul>
+                        <li th:each="err : ${#fields.allErrors()}" th:text="${err}"/>
+                    </ul>
+                </div>
+
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Rapor Ekle</button>
+            </form>
+            <br><br>
+
+            <a th:href="@{/laborantlar/anasayfa}" class="btn btn-dark btn-m btn-block" type="submit">Laborantlar
+                Anasayfa</a>
+            <a th:href="@{/raporlar/anasayfa}" class="btn btn-dark btn-m btn-block" type="submit">Raporlar Anasayfa</a>
+
+        </div>
+    </div>
+</div>
+<script>
+    var el_button = document.getElementById("button_id");
+    el_button.onclick = fillDateNow;
+
+    function fillDateNow() {
+        var today = new Date().toISOString().substring(0, 16)
+        document.getElementById("date").value = today;
+    }
+</script>
+</body>
+</html>
