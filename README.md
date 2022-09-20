@@ -46,10 +46,16 @@ git clone https://github.com/derinaden/LabWebApplication.git
 
 ![image](https://user-images.githubusercontent.com/57384157/190940790-63b43fa9-6fe2-406d-af57-72cf44559e5e.png)
 
+``Genel Testler``
+
+![image](https://user-images.githubusercontent.com/57384157/191248521-e7a67494-82d3-4094-acc8-4a89c5f587e8.png)
+
 
 ## Projeyi Başlatmak
 Proje 8081 portunda çalıştığı için projeyi 
-``localhost:8081``
+``localhost:8081/login``
+veya
+``localhost:8081/``
 sitesini ziyaret ederek çalıştırabilirsiniz.
 
 Bu sayfadan laborantlar ve raporlara giderek projede gezinebilirsiniz.
