@@ -73,6 +73,9 @@ Laborant için kullanıcı adı ve şifre:
 ![image](https://user-images.githubusercontent.com/57384157/191248521-e7a67494-82d3-4094-acc8-4a89c5f587e8.png)
 
 
+## Proje İçeriği
+Bu proje Spring, Spring Security, H2, Thymeleaf, Bootstrap, Mockito, Maven, Css ve Js ile yapılmıştır. Proje içinde görüntü açısından daha iyi olması için kişisel CSS dosyaları ve slide için JS dosyaları da bulunmaktadır.  
+
 ## Geliştirme
 Spring taraflı daha fazla endpoint ekleyerek proje geliştirilebilir.
 
