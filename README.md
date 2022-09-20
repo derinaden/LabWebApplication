@@ -2,7 +2,7 @@
 
 Özgür Yazılım A.Ş için yaptığım Web Laboratuvar Uygulaması.
 
-## Kurulum
+## Kurulum ve Çalıştırma
 
 Aşağıdaki kod ile projeyi kendi kişisel bilgisayarınıza klonlayabilirsiniz.
 
@@ -10,9 +10,31 @@ Aşağıdaki kod ile projeyi kendi kişisel bilgisayarınıza klonlayabilirsiniz
 git clone https://github.com/derinaden/LabWebApplication.git
 ```
 
+Klonladıktan sonra terminalden projenizin olduğu konuma giderek 
+``
+mvn spring-boot:run
+``
+kodunu çalıştırarak projeyi uçurabilirsiniz.
+
+! Proje Java 18 ile yazılmıştır. Dikkat edilmesi gereken nokta terminalde ``java -version`` yazdığınızda çıkan versiyon ile pom.xml'de yazan versiyonun birbiri ile aynı olmasıdır. Versiyonlar aynı olduğunda yukarıda belirtilen kod parçacığını yazarak projeyi çalıştırabilirsiniz.
+
+Proje 8081 portunda çalıştığı için projeyi 
+``localhost:8081/login``
+veya
+``localhost:8081/``
+sitesini ziyaret ederek çalıştırabilirsiniz.
+
 ## Uygulama Görüntüleri
 
 ``Giriş Sayfası``
+
+Giriş bilgileri aşağıda belirtilmiştir;
+
+Admin için kullanıcı adı ve şifre:
+``Kullanıcı Adı: admin Şifre: admin``
+
+Laborant için kullanıcı adı ve şifre:
+``Kullanıcı Adı: laborant Şifre: laborant``
 
 ![image](https://user-images.githubusercontent.com/57384157/190938923-b0cde30f-4bde-4662-82ed-aaf917a77ad6.png)
 
@@ -50,15 +72,6 @@ git clone https://github.com/derinaden/LabWebApplication.git
 
 ![image](https://user-images.githubusercontent.com/57384157/191248521-e7a67494-82d3-4094-acc8-4a89c5f587e8.png)
 
-
-## Projeyi Başlatmak
-Proje 8081 portunda çalıştığı için projeyi 
-``localhost:8081/login``
-veya
-``localhost:8081/``
-sitesini ziyaret ederek çalıştırabilirsiniz.
-
-Bu sayfadan laborantlar ve raporlara giderek projede gezinebilirsiniz.
 
 ## Geliştirme
 Spring taraflı daha fazla endpoint ekleyerek proje geliştirilebilir.
